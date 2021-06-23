@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:harris_matrix/nodeEntry.dart';
 
 class OverviewPage extends StatefulWidget {
   @override
   _OverviewPageState createState() => _OverviewPageState();
 }
 
-class _OverviewPageState extends State<OverviewPage>{
+class _OverviewPageState extends State<OverviewPage> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Harris Matrix Tool'),
+          title: Text('Harris Matrix Tool'),
         ),
-        body: const Center(
-          child: Text('Fancy painting goes here'),
-        ),
+        body: Padding(
+            //child: Text('Fancy painting goes here'),
+            padding: const EdgeInsets.all(16.0),
+            child: FloatingActionButton(
+              child: const Icon(Icons.plus_one),
+                onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NodeEntry()),
+              );
+            })),
       ),
     );
   }
