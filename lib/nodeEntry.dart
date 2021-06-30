@@ -6,14 +6,16 @@ class NodeEntry extends StatefulWidget {
 }
 
 class _NodeEntryState extends State<NodeEntry> {
-  final myController = TextEditingController();
+  final levelNameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  String selected = "1";  //TODO: how to populate with real values? Creates side effect.
+  String selectedUpperLevel = "0";
+  String selectedLowerLevel = "0";
+  String selectedSideLevel = "0";
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    levelNameController.dispose();
     super.dispose();
   }
 
@@ -24,7 +26,6 @@ class _NodeEntryState extends State<NodeEntry> {
         items.add(new DropdownMenuItem(
             value: i.toString(), child: Text(i.toString())));
       }
-      selected = items[0].value.toString();
       return items;
     }
 
@@ -40,7 +41,7 @@ class _NodeEntryState extends State<NodeEntry> {
                   children: [
                     TextFormField(
                       decoration: InputDecoration(labelText: "Schichtname"),
-                      controller: myController,
+                      controller: levelNameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Bitte Schichtname eingeben';
@@ -49,30 +50,25 @@ class _NodeEntryState extends State<NodeEntry> {
                       },
                     ),
                     DropdownButtonFormField(
-                      value: selected,
                       decoration: InputDecoration(labelText: "Schicht oben"),
                       items: getDropDownMenuItems(),
                       onChanged: (value) {
-                        selected = value.toString();
+                        selectedUpperLevel = value.toString();
                       },
                     ),
                     DropdownButtonFormField(
-                      value: selected,
                       decoration: InputDecoration(labelText: "Schicht unten"),
-                      hint: Text("please choose one"),
                       items: getDropDownMenuItems(),
                       onChanged: (value) {
-                        selected = value.toString();
+                        selectedLowerLevel = value.toString();
                       },
                     ),
                     DropdownButtonFormField(
-                      value: selected,
                       decoration:
                           InputDecoration(labelText: "Gleiche Höhe wie"),
-                      hint: Text("please choose one"),
                       items: getDropDownMenuItems(),
                       onChanged: (value) {
-                        selected = value.toString();
+                        selectedSideLevel = value.toString();
                       },
                     ),
                     ElevatedButton(
@@ -81,6 +77,8 @@ class _NodeEntryState extends State<NodeEntry> {
                             //TODO: replace this with database entry
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text('Processing Data')));
+                            print(levelNameController.text);
+                            print(selectedUpperLevel+ selectedLowerLevel+ selectedSideLevel);
                             Navigator.pop(context);
                           } else {
                             SnackBar(content: Text('Add some text!'));
