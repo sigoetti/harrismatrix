@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harris_matrix/models/shapes.dart';
 import 'package:harris_matrix/views/nodeEntry.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -15,16 +16,22 @@ class _OverviewPageState extends State<OverviewPage> {
           title: Text('Harris Matrix Tool'),
         ),
         body: Padding(
-            //child: Text('Fancy painting goes here'),
             padding: const EdgeInsets.all(16.0),
-            child: FloatingActionButton(
-              child: const Icon(Icons.plus_one),
-                onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NodeEntry()),
-              );
-            })),
+            child: Column(
+              children: [
+                CustomPaint(
+                  painter: RectanglePainter(),
+                ),
+                FloatingActionButton(
+                    child: const Icon(Icons.plus_one),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NodeEntry()),
+                      );
+                    }),
+              ],
+            )),
       ),
     );
   }
