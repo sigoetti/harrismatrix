@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harris_matrix/nodeEntry.dart';
+import 'package:harris_matrix/views/nodeEntry.dart';
 
 class OverviewPage extends StatefulWidget {
   @override

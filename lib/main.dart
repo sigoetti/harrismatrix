@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harris_matrix/overviewPage.dart';
+import 'package:harris_matrix/views/overviewPage.dart';
 
 void main() {
   runApp(MyApp());
