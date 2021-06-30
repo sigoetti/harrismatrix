@@ -16,22 +16,32 @@ class _OverviewPageState extends State<OverviewPage> {
           title: Text('Harris Matrix Tool'),
         ),
         body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                CustomPaint(
-                  painter: RectanglePainter(),
-                ),
-                FloatingActionButton(
-                    child: const Icon(Icons.plus_one),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => NodeEntry()),
-                      );
-                    }),
-              ],
-            )),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  CustomPaint(
+                    painter: RectanglePainter(),
+                    child: Text("text"),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  FloatingActionButton(
+                      child: const Icon(Icons.plus_one),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NodeEntry()),
+                        );
+                      }),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
